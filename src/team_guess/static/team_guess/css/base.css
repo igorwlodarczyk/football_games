@@ -1,0 +1,90 @@
+body {
+    background-color: #d3d1d1;
+}
+
+.game_name {
+    font-family: 'Pixelify Sans', sans-serif;
+    text-align: center;
+    font-size: 60px;
+}
+
+.home {
+    position: relative;
+    font-family: 'Pixelify Sans', sans-serif;
+    text-align: center;
+    font-size: 26px;
+    top: -40px;
+}
+
+#clubs {
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 26px;
+    width: 500px;
+    height: 30px;
+    margin: 0 auto;
+    display: block;
+}
+
+#result {
+    font-family: 'Pixelify Sans', sans-serif;
+    text-align: center;
+    font-size: 26px;
+}
+
+#wrong_result {
+    font-family: 'Pixelify Sans', sans-serif;
+    text-align: center;
+    font-size: 26px;
+}
+
+#info {
+    font-family: 'Pixelify Sans', sans-serif;
+    text-align: center;
+    font-size: 26px;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: rgb(236, 0, 0);
+}
+
+.ui-menu-item {
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 26px;
+    padding: 0px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    list-style: none;
+    max-width: 210px;
+}
+
+.football_pitch {
+position: relative;
+top: 40px;
+width: 500px;
+height: 500px;;
+border: 2px solid black;
+z-index: 1;
+transform: translate(-50%, 0%);
+left: 50%;
+}
+
+.background {
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+}
+
+.player {
+width: 10%;
+height: 10%;
+box-sizing: border-box;
+position: relative;
+transform: translate(-50%, +50%);
+border-radius: 50%;
+border: 1px solid black;
+z-index: 3;
+}
