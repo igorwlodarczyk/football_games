@@ -8,7 +8,32 @@
     {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
-    <script src="{% static 'team_guess/js/football_quiz.js' %}"></script>
+    <script>
+        $(function() {
+            var clubs = [
+                {% for club in clubs %}
+                "{{ club.name }}",
+                {% endfor %}
+            ];
+            $("#clubs").autocomplete({
+                source: clubs
+            });
+
+            $("#clubs").on('keydown', function(event) {
+                if (event.which === 13) {
+                    if ($("#clubs").val() === "{{ riddle.club.name }}") {
+                        $("#result").show();
+                        $("#info").hide();
+                        $("#wrong_result").hide();
+                    } else {
+                        $("#result").hide();
+                        $("#info").hide();
+                        $("#wrong_result").show();
+                    }
+                }
+            });
+        });
+    </script>
     {% endblock %}
 
 
@@ -17,22 +42,22 @@
         <a href="/">Previous day</a>
     </div>
     <input type="text" id="clubs">
-    <p id="result" class="correct" style="display: none;">Good guess!</p>
+    <p id="result" class="correct" style="display: none;">Correct! {{ riddle.club.name }} {{ riddle.result }} {{ riddle.enemy_club }} - {{ riddle.season }}</p>
     <p id="wrong_result" class="incorrect" style="display: none;">Wrong guess!</p>
     <p id="info" style="display: block;">Make a guess!</p>
 
     <div class="football_pitch">
-        <img class="background" src="soccer_grass.png">
-        <img class="player" id="player_1" src="pl_flag.png">
-        <img class="player" id="player_2" src="pl_flag.png">
-        <img class="player" id="player_3" src="pl_flag.png">
-        <img class="player" id="player_4" src="pl_flag.png">
-        <img class="player" id="player_5" src="pl_flag.png">
-        <img class="player" id="player_6" src="pl_flag.png">
-        <img class="player" id="player_7" src="pl_flag.png">
-        <img class="player" id="player_8" src="pl_flag.png">
-        <img class="player" id="player_9" src="pl_flag.png">
-        <img class="player" id="player_10" src="pl_flag.png">
-        <img class="player" id="player_11" src="pl_flag.png">
+        <img class="background" src="{% static 'soccer_grass.png' %}">
+        <img class="player" id="player_1" src="{{ riddle.player_1.flag.url }}">
+        <img class="player" id="player_2" src="{{ riddle.player_2.flag.url }}">
+        <img class="player" id="player_3" src="{{ riddle.player_3.flag.url }}">
+        <img class="player" id="player_4" src="{{ riddle.player_4.flag.url }}">
+        <img class="player" id="player_5" src="{{ riddle.player_5.flag.url }}">
+        <img class="player" id="player_6" src="{{ riddle.player_6.flag.url }}">
+        <img class="player" id="player_7" src="{{ riddle.player_7.flag.url }}">
+        <img class="player" id="player_8" src="{{ riddle.player_8.flag.url }}">
+        <img class="player" id="player_9" src="{{ riddle.player_9.flag.url }}">
+        <img class="player" id="player_10" src="{{ riddle.player_10.flag.url }}">
+        <img class="player" id="player_11" src="{{ riddle.player_11.flag.url }}">
     </div>
     {% endblock %}
