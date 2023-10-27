@@ -9,7 +9,8 @@ def calculate_game_day():
     deployment_date = datetime.datetime.strptime(config("DEPLOYMENT_DATE"), "%Y-%m-%d")
     today = datetime.datetime.now()
     game_day = (today - deployment_date).days
-    return game_day + 1
+    riddle_count = Riddle.objects.count()
+    return min(game_day + 1, riddle_count)
 
 
 def index(request):
@@ -18,9 +19,12 @@ def index(request):
 
 
 def game(request, riddle_id):
+    game_day = calculate_game_day()
+    if riddle_id > game_day:
+        return redirect("game", riddle_id=game_day)
     riddle = get_object_or_404(Riddle, id=riddle_id)
     all_clubs = Club.objects.all()
-    random_day = random.randint(1, calculate_game_day())
+    random_day = random.randint(1, game_day)
     return render(
         request,
         "team_guess/index.html",
