@@ -1,0 +1,77 @@
+/* 433_2 */
+/* gk */
+#player_1 {
+position: absolute;
+top: 0%;
+left: 50%;
+}
+
+/* rcb */
+#player_2 {
+position: absolute;
+top: 15%;
+left: 37%;
+}
+
+/* lcb */
+#player_3 {
+position: absolute;
+top: 15%;
+left: 63%;
+}
+
+/* rb */
+#player_4 {
+position: absolute;
+top: 15%;
+left: 15%;
+}
+
+/* lb */
+#player_5 {
+position: absolute;
+top: 15%;
+left: 85%;
+}
+
+/* rcm */
+#player_6 {
+position: absolute;
+top: 38%;
+left: 26%;
+}
+
+/* cdm */
+#player_7 {
+position: absolute;
+top: 34%;
+left: 50%;
+}
+
+/* lcm */
+#player_8 {
+position: absolute;
+top: 38%;
+left: 74%;
+}
+
+/* fw */
+#player_9 {
+position: absolute;
+top: 72%;
+left: 50%;
+}
+
+/* rw */
+#player_10 {
+position: absolute;
+top: 67%;
+left: 15%;
+}
+
+/* lw */
+#player_11 {
+position: absolute;
+top: 67%;
+left: 85%;
+}
