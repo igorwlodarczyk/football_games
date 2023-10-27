@@ -2,8 +2,7 @@
 {% load static %}
     {% block page_title %}Football quiz{% endblock %}
     {% block formation %}
-    <link rel="stylesheet" type="text/css" href="{% static 'team_guess/css/433_1.css' %}">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'team_guess/css/'|add:riddle.formation|add:'.css' %}">
     {% endblock %}
 
     {% block scripts %}
