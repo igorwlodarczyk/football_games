@@ -1,4 +1,5 @@
 import datetime
+import random
 from django.shortcuts import render, get_object_or_404, redirect
 from decouple import config
 from .models import Riddle, Club
@@ -19,6 +20,9 @@ def index(request):
 def game(request, riddle_id):
     riddle = get_object_or_404(Riddle, id=riddle_id)
     all_clubs = Club.objects.all()
+    random_day = random.randint(1, calculate_game_day())
     return render(
-        request, "team_guess/index.html", {"riddle": riddle, "clubs": all_clubs}
+        request,
+        "team_guess/index.html",
+        {"riddle": riddle, "clubs": all_clubs, "random_day": random_day},
     )

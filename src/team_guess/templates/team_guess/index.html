@@ -41,7 +41,13 @@
 
     {% block content %}
     <div class="home">
-        <a href="/">Previous day</a>
+        {% if riddle.pk > 1 %}
+            <a href="{% url 'game' riddle.pk|add:"-1" %}">Previous day</a>
+        {% else %}
+            <a href="{% url 'game' 1 %}">Previous day</a>
+        {% endif %}
+        <a> - </a>
+        <a href="{% url 'game' random_day %}">Random day</a>
     </div>
     <input type="text" id="clubs">
     <p id="result" class="correct" style="display: none;">Correct! {{ riddle.club.name }} {{ riddle.result }} {{ riddle.enemy_club }} - {{ riddle.season }}</p>
