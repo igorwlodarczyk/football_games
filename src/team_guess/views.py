@@ -1,11 +1,19 @@
-from django.shortcuts import render, get_object_or_404
+import datetime
+from django.shortcuts import render, get_object_or_404, redirect
+from decouple import config
 from .models import Riddle, Club
 
-# Create your views here.
+
+def calculate_game_day():
+    deployment_date = datetime.datetime.strptime(config("DEPLOYMENT_DATE"), "%Y-%m-%d")
+    today = datetime.datetime.now()
+    game_day = (today - deployment_date).days
+    return game_day + 1
 
 
 def index(request):
-    return render(request, "team_guess/index.html")
+    game_day = calculate_game_day()
+    return redirect("game", riddle_id=game_day)
 
 
 def game(request, riddle_id):
